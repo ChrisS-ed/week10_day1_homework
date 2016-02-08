@@ -46,7 +46,7 @@ planetRouter.post('/:id', function(req, res) {
   // res.send("UPDATE planet route " + solarSystem.planets[req.params.id-1].name);
 });
 
-planetRouter.post('/:id', function(req, res) {
+planetRouter.post('/:id/delete', function(req, res) {
   // DELETE
   solarSystem.planets.splice(req.params.id-1, 1);
   res.redirect('/planets');
