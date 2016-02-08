@@ -1,6 +1,17 @@
 <h1> The Planets </h1>
 
-<% for (var i = 0; i < solarSystem.planets.length; i++) { %>
-  <p><a href="/planets/<%= i+1 %>"><%= solarSystem.planets[i].name %></a> Size: <%= solarSystem.planets[i].size %></p>
-  <% } %>
+<%  for (var i = 0; i < solarSystem.planets.length; i++) { %>
+  <p>
 
+  <a href="/planets/<%= i+1 %>"><%= solarSystem.planets[i].name %></a> Size: <%= solarSystem.planets[i].size %>
+  | <a href="/planets/<%= i+1 %>/edit">Edit</a>
+
+  <form action="/planets/<%= i+1 %>/delete" method="post" name="deleteForm">
+    <input type="hidden" name="planet[id]" value="<%= i %>">
+    <button type="submit">Delete</button>
+  </form>
+
+  </p>
+<% } %>
+
+<a href="/planets/new">Add New Planet</a>

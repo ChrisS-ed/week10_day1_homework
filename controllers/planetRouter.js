@@ -33,17 +33,24 @@ planetRouter.get('/:id', function(req, res){
 
 planetRouter.get('/:id/edit', function(req, res) {
   // EDIT
-  res.send("EDIT planet route " + solarSystem.planets[req.params.id-1].name);
+  res.render('planets/edit', {planet: solarSystem.planets[req.params.id-1], id:req.params.id });
+  // res.send("EDIT planet route " + solarSystem.planets[req.params.id-1].name);
 });
 
 planetRouter.post('/:id', function(req, res) {
   // UPDATE
-  res.send("UPDATE planet route " + solarSystem.planets[req.params.id-1].name);
+  var planet = solarSystem.planets[req.params.id-1];
+  planet.name = req.body.name;
+  planet.size = req.body.size;
+  res.redirect('/planets');
+  // res.send("UPDATE planet route " + solarSystem.planets[req.params.id-1].name);
 });
 
 planetRouter.post('/:id', function(req, res) {
   // DELETE
-  res.send("DELETE planet " + solarSystem.planets[req.params.id-1].name);
+  solarSystem.planets.splice(req.params.id-1, 1);
+  res.redirect('/planets');
+  // res.send("DELETE planet " + solarSystem.planets[req.params.id-1].name);
 });
 
 module.exports = planetRouter;

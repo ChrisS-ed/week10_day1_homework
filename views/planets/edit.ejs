@@ -1,0 +1,9 @@
+<form action="/planets/<%= id %>" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%= planet.name %>">
+
+  <label for="size">Size</label>
+  <input type="text" name="size" value="<%= planet.size %>">
+
+  <input type="submit" value="Edit Planet!">
+</form>
